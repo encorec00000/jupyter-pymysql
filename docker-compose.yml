@@ -18,7 +18,7 @@ services:
       - 8080:8080
 
   jupyter:
-    image: jupyter/base-notebook:latest
+    image: encorec00000/jupyter-db:v1
     ports:
       - 8888:8888
     command: "start-notebook.sh --NotebookApp.token=''"
