@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  db:
+    container_name: db-demo
+    image: mysql:5.7.26
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+  db-adminer:
+    container_name: db-adminer-demo
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  jupyter:
+    image: jupyter/base-notebook:latest
+    ports:
+      - 8888:8888
+    command: "start-notebook.sh --NotebookApp.token=''"
+    volumes:  
+      - /tmp/jupyter_test_dir:/home/docker_worker/work
+
+
